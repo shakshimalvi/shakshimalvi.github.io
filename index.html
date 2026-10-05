@@ -333,19 +333,11 @@
 
 <footer>
   <div class="container">
-    <p>© 2026 Shakshi Malvi · <span>Data Science Trainee</span></p>
+    <p>© <time id="year">2026</time> Shakshi Malvi · <span>Data Science Trainee</span></p>
   </div>
 </footer>
 
-<script>
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(e => e.isIntersecting && e.target.classList.add('visible'));
-  }, { threshold: 0.12 });
-  document.querySelectorAll('section:not(.hero), .project-card, .skill-card').forEach(el => {
-    el.classList.add('reveal');
-    io.observe(el);
-  });
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>
