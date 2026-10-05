@@ -337,6 +337,11 @@ section {
     gap: 22px;
 }
 
+/* Last card spans full width when the count is odd */
+.projects-grid .project-card:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+}
+
 .project-card {
     background: var(--card);
     border: 1px solid var(--border);
@@ -546,6 +551,21 @@ footer span {
 .reveal.visible {
     opacity: 1;
     transform: none;
+}
+
+/* Keep card hover effects working after reveal */
+.project-card.reveal,
+.skill-card.reveal {
+    transition: opacity 0.6s ease, transform 0.35s ease,
+                border-color 0.3s ease, background 0.3s ease;
+}
+
+.project-card.visible:hover {
+    transform: translateY(-6px);
+}
+
+.skill-card.visible:hover {
+    transform: translateY(-5px);
 }
 
 
