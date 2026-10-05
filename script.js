@@ -10,33 +10,47 @@ if (yearElement) {
 
 
 // =========================
-// MOBILE NAVIGATION
+// ACTIVE NAV LINK (highlights current section on scroll)
 // =========================
 
 const navLinks = document.querySelectorAll(".nav-links a");
+const pageSections = document.querySelectorAll("section[id]");
 
-navLinks.forEach(link => {
-    link.addEventListener("click", () => {
-        navLinks.forEach(item => {
-            item.classList.remove("active");
+const navObserver = new IntersectionObserver(
+    entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                navLinks.forEach(link => {
+                    link.classList.toggle(
+                        "active",
+                        link.getAttribute("href") === "#" + entry.target.id
+                    );
+                });
+            }
         });
+    },
+    {
+        rootMargin: "-40% 0px -55% 0px"
+    }
+);
 
-        link.classList.add("active");
-    });
-});
+pageSections.forEach(section => navObserver.observe(section));
 
 
 // =========================
 // SCROLL REVEAL
 // =========================
 
-const sections = document.querySelectorAll("section");
+const revealTargets = document.querySelectorAll(
+    "section:not(.hero), .project-card, .skill-card, .cert-card, .stat-card"
+);
 
-const observer = new IntersectionObserver(
+const revealObserver = new IntersectionObserver(
     entries => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add("visible");
+                revealObserver.unobserve(entry.target);
             }
         });
     },
@@ -45,6 +59,7 @@ const observer = new IntersectionObserver(
     }
 );
 
-sections.forEach(section => {
-    observer.observe(section);
+revealTargets.forEach(el => {
+    el.classList.add("reveal");
+    revealObserver.observe(el);
 });
