@@ -268,13 +268,13 @@ section {
     background: var(--card);
     border: 1px solid var(--border);
     border-radius: 12px;
-    padding: 25px;
+    padding: 18px 25px;
 }
 
 .stat-card h3 {
     color: var(--accent);
-    font-size: 1.8rem;
-    margin-bottom: 5px;
+    font-size: 1.6rem;
+    margin-bottom: 0;
 }
 
 .stat-card p {
@@ -415,7 +415,7 @@ section {
 
 
 /* =========================
-   EXPERIENCE / EDUCATION
+   EDUCATION (TIMELINE)
 ========================= */
 
 .timeline {
